@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{modalTitle}} {{data.mode === 'view' ? ' - ' + data.note.title : '' }} &nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <mat-slide-toggle *ngIf="data.mode !== 'view'" [(ngModel)]="isMultiLine"> Multi
+        Line</mat-slide-toggle></h1>
+<div mat-dialog-content>
+
+    <form class="swift-form" [formGroup]="swiftForm">
+        <mat-form-field *ngIf="data.mode !== 'view'" class="full-width">
+            <mat-label>Swift Note Title</mat-label>
+            <input matInput formControlName='title' placeholder="Note Name .." value="Sample Note" required>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="data.mode !== 'view'" class="full-width">
+            <mat-label>Content</mat-label>
+            <textarea matInput (input)="handleInput($event)" formControlName='content'
+                placeholder="Ex. My First Note"></textarea>
+        </mat-form-field>
+        <p *ngIf="data.mode === 'view'" [innerHTML]="processContent(data.note.content)"></p>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button *ngIf="data.mode !== 'view'" mat-button (click)="onSaveNote()">Save</button>
+</div>

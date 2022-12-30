@@ -1,0 +1,15 @@
+<div class="content">
+    <mat-grid-list [cols]="(cardsLayout | async)?.gridColumns" rowHeight="2:1" >
+      <mat-grid-tile *ngFor="let num of gridData">
+        <mat-card class="example-card" (click)="viewNote(num.id)">
+          <mat-card-header>
+            <mat-card-title> {{num.title}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p [innerHTML]="processContent(num.content)">
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    </div>
