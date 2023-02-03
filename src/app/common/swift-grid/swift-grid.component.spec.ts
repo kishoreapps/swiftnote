@@ -20,4 +20,13 @@ describe('SwiftGridComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('should set checbox and validate strikethrough class added', () => {
+    component.setAll(0,true);
+    const compiled = fixture.debugElement.nativeElement; 
+   console.log(compiled)
+
+
+  });
 });

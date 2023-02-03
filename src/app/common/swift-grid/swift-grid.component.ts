@@ -17,6 +17,8 @@ export class SwiftGridComponent implements OnInit {
   @Input() gridData: any[] = [];
   @Output() noteClickEvent = new EventEmitter<string>();
 
+  checkboxData: any[] = [];
+
   constructor(public breakpointObserver: BreakpointObserver) {
     // responsive using cdk layout
     this.cardsLayout = merge(
@@ -62,6 +64,10 @@ export class SwiftGridComponent implements OnInit {
    */
   processContent(content:string){
     return content.replaceAll('\u2022','<br>\u2022').substring(10)
+  }
+
+  setAll(i: any, state: boolean) {
+    this.checkboxData[i] = state;
   }
 }
 

@@ -1,5 +1,5 @@
 <div class="content">
-    <mat-grid-list [cols]="(cardsLayout | async)?.gridColumns" rowHeight="2:1" >
+  <!-- <mat-grid-list [cols]="(cardsLayout | async)?.gridColumns" rowHeight="2:1" >
       <mat-grid-tile *ngFor="let num of gridData">
         <mat-card class="example-card" (click)="viewNote(num.id)">
           <mat-card-header>
@@ -11,5 +11,16 @@
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
-    </mat-grid-list>
-    </div>
+    </mat-grid-list> -->
+
+  <mat-list role="list">
+    <mat-list-item *ngFor="let num of gridData;let i = index" role="listitem">
+      <mat-checkbox class="example-margin" [checked]="checkboxData[i]" (change)="setAll(i, $event.checked)">
+        <p [class]="checkboxData[i] ? 'strike-through':''">{{num.title}}
+        <p>
+      </mat-checkbox>
+      <!-- <p [innerHTML]="processContent(num.content)"> -->
+
+    </mat-list-item>
+  </mat-list>
+</div>
